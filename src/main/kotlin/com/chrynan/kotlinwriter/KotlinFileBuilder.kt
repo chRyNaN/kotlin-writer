@@ -164,23 +164,3 @@ fun kotlinFile(packageName: String, fileName: String, block: KotlinFileBuilder.(
     block(fileBuilder)
     return fileBuilder.build()
 }
-
-fun test(){
-    kotlinFile("com.chrynan.test", "TestFile") {
-        nestedClass("Greeter") {
-            primaryConstructor = {
-                parameter("name", String::class)
-            }
-
-            function("greet") {
-                body = codeBlockWithArgs("Hello, \$name") { "println(%s)" }
-            }
-        }
-
-        function("main") {
-            parameter("args", String::class) { modifiers(KModifier.VARARG) }
-
-            body = codeBlockString { "Greeter(args[0]).greet()" }
-        }
-    }
-}

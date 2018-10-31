@@ -11,7 +11,7 @@ implementation 'com.github.chRyNaN:kotlin-writer:Tag'
 ```
 
 ## Status
-This library is still new and possible incomplete and error prone. Use with caution.
+This library is still new and possibly incomplete and error prone. Use with caution.
 
 ## Example
 The [KotlinPoet](https://github.com/square/kotlinpoet) library uses the following example:
@@ -53,7 +53,7 @@ file.writeTo(System.out)
 
 **Kotlin-Writer (This Library):**
 ```kotlin
-val file = kotlinFile("com.chrynan.test", "TestFile") {
+val file = kotlinFile("", "HelloWorld") {
         nestedClass("Greeter") {
             primaryConstructor = {
                 parameter("name", String::class)

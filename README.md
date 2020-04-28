@@ -6,8 +6,19 @@ This library wraps the [KotlinPoet](https://github.com/square/kotlinpoet) librar
 [![](https://jitpack.io/v/chRyNaN/kotlin-writer.svg)](https://jitpack.io/#chRyNaN/kotlin-writer)
 
 ## Building
-```groovy
-implementation 'com.github.chRyNaN:kotlin-writer:Tag'
+
+### Repository
+```kotlin
+repositories {
+    maven {
+        url = uri("https://dl.bintray.com/chrynan/chrynan")
+    }
+}
+```
+
+### Dependency
+```kotlin
+implementation("com.chrynan.kotlin-writer:kotlin-writer:VERSION")
 ```
 
 ## Status

@@ -15,7 +15,8 @@ class KotlinFileWriter(private val processingEnvironment: ProcessingEnvironment)
 
     fun write(fileSpec: FileSpec) = fileSpec.writeTo(getKotlinBaseGeneratedFile())
 
-    private fun getKotlinBaseGeneratedFile() = File(processingEnvironment.options[KOTLIN_GENERATED_FILES_BASE_LOCATION])
+    private fun getKotlinBaseGeneratedFile() =
+        File(processingEnvironment.options[KOTLIN_GENERATED_FILES_BASE_LOCATION] ?: "")
 }
 
 fun FileSpec.writeWith(writer: KotlinFileWriter) = writer.write(this)

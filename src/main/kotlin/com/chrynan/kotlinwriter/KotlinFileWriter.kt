@@ -20,3 +20,5 @@ class KotlinFileWriter(private val processingEnvironment: ProcessingEnvironment)
 }
 
 fun FileSpec.writeWith(writer: KotlinFileWriter) = writer.write(this)
+
+fun FileSpec.writeIn(processingEnvironment: ProcessingEnvironment) = writeWith(KotlinFileWriter(processingEnvironment))

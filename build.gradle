@@ -3,8 +3,8 @@ ext {
     libraryGroup = "com.chrynan.kotlin-writer"
     libraryOwner = "chrynan"
     libraryRepo = "kotlin-writer"
-    libraryVersion = "0.1.0"
-    libraryVersionCode = 2
+    libraryVersion = "0.2.0"
+    libraryVersionCode = 3
     libraryVersionDescription = "Second Major Release"
 }
 

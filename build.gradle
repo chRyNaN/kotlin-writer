@@ -1,15 +1,84 @@
-plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.0'
+ext {
+    bintrayRepo = "chrynan"
+    libraryGroup = "com.chrynan.kotlin-writer"
+    libraryOwner = "chrynan"
+    libraryRepo = "kotlin-writer"
+    libraryVersion = "0.1.0"
+    libraryVersionCode = 2
+    libraryVersionDescription = "Second Major Release"
 }
 
-group 'com.chrynan'
-version '0.1.0'
+group libraryGroup
+version libraryVersion
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.10.1"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: "kotlin"
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.dokka'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-    compile 'com.squareup:kotlinpoet:1.0.0-RC2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "com.squareup:kotlinpoet:1.5.0"
 }
+
+dokka {
+    outputFormat = 'gfm'
+    outputDirectory = "../docs"
+
+    configuration {
+        includeNonPublic = false
+        skipEmptyPackages = true
+        skipDeprecated = true
+        reportUndocumented = true
+        jdkVersion = 8
+        targets = ["JVM", "COMMON"]
+    }
+}
+
+bintray {
+    user = project.findProperty("BINTRAY_USER") ?: System.getenv("BINTRAY_USER")
+    key = project.findProperty("BINTRAY_KEY") ?: System.getenv("BINTRAY_KEY")
+    pkg {
+        repo = rootProject.bintrayRepo
+        name = rootProject.libraryRepo
+        licenses = ["Apache-2.0"]
+        vcsUrl = "https://github.com/chRyNaN/kotlin-writer"
+        version {
+            name = rootProject.libraryVersion
+            desc = rootProject.libraryVersionDescription
+            released = new Date()
+            vcsTag = rootProject.libraryVersion
+        }
+    }
+}
+
+bintrayUpload.doFirst {
+    publications = publishing.publications.collect {
+        it.name
+    }
+}
+
+bintrayUpload.dependsOn publishToMavenLocal

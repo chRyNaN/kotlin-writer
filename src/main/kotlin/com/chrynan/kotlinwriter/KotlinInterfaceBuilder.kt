@@ -15,7 +15,7 @@ class KotlinInterfaceBuilder internal constructor(private val builder: TypeSpec.
     }
 
     fun superInterface(interfaceTypeName: TypeName, delegate: CodeBlock = CodeBlock.of("")) {
-        builder.addSuperinterface(interfaceTypeName)
+        builder.addSuperinterface(interfaceTypeName, delegate)
     }
 
     fun kDoc(format: String, args: Any) {

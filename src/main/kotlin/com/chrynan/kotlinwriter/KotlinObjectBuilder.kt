@@ -58,7 +58,7 @@ class KotlinObjectBuilder internal constructor(private val builder: TypeSpec.Bui
     }
 
     fun superInterface(interfaceTypeName: TypeName, delegate: CodeBlock = CodeBlock.of("")) {
-        builder.addSuperinterface(interfaceTypeName)
+        builder.addSuperinterface(interfaceTypeName, delegate)
     }
 
     fun property(name: String, type: Type, block: KotlinPropertyBuilder.() -> Unit) {

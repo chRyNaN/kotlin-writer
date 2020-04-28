@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import java.lang.reflect.Type
 import kotlin.reflect.KClass
 
-class KotlinObjectBuilder(private val builder: TypeSpec.Builder) {
+class KotlinObjectBuilder internal constructor(private val builder: TypeSpec.Builder) {
 
     var superClass: TypeName? = null
         set(value) {
@@ -109,5 +109,5 @@ class KotlinObjectBuilder(private val builder: TypeSpec.Builder) {
         builder.addType(nestedObjectBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

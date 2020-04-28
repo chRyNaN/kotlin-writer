@@ -7,7 +7,10 @@ import java.lang.reflect.Type
 import javax.lang.model.element.Modifier
 import kotlin.reflect.KClass
 
-class KotlinFunctionBuilder(private val builder: FunSpec.Builder, interfaceFunction: Boolean = false) {
+class KotlinFunctionBuilder internal constructor(
+    private val builder: FunSpec.Builder,
+    interfaceFunction: Boolean = false
+) {
 
     init {
         if (interfaceFunction) builder.addModifiers(KModifier.ABSTRACT)
@@ -94,5 +97,5 @@ class KotlinFunctionBuilder(private val builder: FunSpec.Builder, interfaceFunct
         builder.addParameter(parameterBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

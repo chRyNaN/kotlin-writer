@@ -5,7 +5,10 @@ package com.chrynan.kotlinwriter
 import com.squareup.kotlinpoet.*
 import kotlin.reflect.KClass
 
-class KotlinPropertyBuilder(private val builder: PropertySpec.Builder, interfaceProperty: Boolean = false) {
+class KotlinPropertyBuilder internal constructor(
+    private val builder: PropertySpec.Builder,
+    interfaceProperty: Boolean = false
+) {
 
     init {
         if (interfaceProperty) builder.addModifiers(KModifier.ABSTRACT)
@@ -92,5 +95,5 @@ class KotlinPropertyBuilder(private val builder: PropertySpec.Builder, interface
         builder.addTypeVariables(typeVariables.toList())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

@@ -7,7 +7,7 @@ import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.TypeAliasSpec
 import com.squareup.kotlinpoet.TypeVariableName
 
-class KotlinTypeAliasBuilder(private val builder: TypeAliasSpec.Builder) {
+class KotlinTypeAliasBuilder internal constructor(private val builder: TypeAliasSpec.Builder) {
 
     fun kDoc(format: String, args: Any) {
         builder.addKdoc(format, args)
@@ -31,5 +31,5 @@ class KotlinTypeAliasBuilder(private val builder: TypeAliasSpec.Builder) {
         builder.addTypeVariables(typeVariables.toList())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

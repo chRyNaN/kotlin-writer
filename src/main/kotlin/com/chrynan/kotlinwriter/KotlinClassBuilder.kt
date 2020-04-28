@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import java.lang.reflect.Type
 import kotlin.reflect.KClass
 
-class KotlinClassBuilder(private val builder: TypeSpec.Builder) {
+class KotlinClassBuilder internal constructor(private val builder: TypeSpec.Builder) {
 
     var superClass: TypeName? = null
         set(value) {
@@ -145,5 +145,5 @@ class KotlinClassBuilder(private val builder: TypeSpec.Builder) {
         builder.addType(nestedEnumClassBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

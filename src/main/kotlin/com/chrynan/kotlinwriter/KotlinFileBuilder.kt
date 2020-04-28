@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import java.lang.reflect.Type
 import kotlin.reflect.KClass
 
-class KotlinFileBuilder(private val spec: FileSpec.Builder) {
+class KotlinFileBuilder internal constructor(private val spec: FileSpec.Builder) {
 
     fun import(constant: Enum<*>) {
         spec.addImport(constant = constant)
@@ -156,7 +156,7 @@ class KotlinFileBuilder(private val spec: FileSpec.Builder) {
         spec.addType(nestedEnumBuilder.build())
     }
 
-    fun build() = spec.build()
+    internal fun build() = spec.build()
 }
 
 fun kotlinFile(packageName: String, fileName: String, block: KotlinFileBuilder.() -> Unit): FileSpec {

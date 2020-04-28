@@ -4,7 +4,7 @@ package com.chrynan.kotlinwriter
 
 import com.squareup.kotlinpoet.CodeBlock
 
-class KotlinCodeBlockBuilder(private val builder: CodeBlock.Builder) {
+class KotlinCodeBlockBuilder internal constructor(private val builder: CodeBlock.Builder) {
 
     fun named(format: String, args: Map<String, *>) = builder.addNamed(format, args)
 
@@ -34,7 +34,7 @@ class KotlinCodeBlockBuilder(private val builder: CodeBlock.Builder) {
 
     fun unindent() = builder.unindent()
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }
 
 fun codeBlock(block: KotlinCodeBlockBuilder.() -> Unit): CodeBlock {

@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import javax.lang.model.element.Modifier
 import kotlin.reflect.KClass
 
-class KotlinParameterBuilder(private val builder: ParameterSpec.Builder) {
+class KotlinParameterBuilder internal constructor(private val builder: ParameterSpec.Builder) {
 
     var defaultValue: CodeBlock = CodeBlock.of("")
         set(value) {
@@ -55,5 +55,5 @@ class KotlinParameterBuilder(private val builder: ParameterSpec.Builder) {
         builder.jvmModifiers(modifiers.toList())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

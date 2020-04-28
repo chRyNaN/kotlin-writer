@@ -2,7 +2,7 @@ package com.chrynan.kotlinwriter
 
 import com.squareup.kotlinpoet.TypeSpec
 
-class KotlinAnonymousClassBuilder(private val builder: TypeSpec.Builder) {
+class KotlinAnonymousClassBuilder internal constructor(private val builder: TypeSpec.Builder) {
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

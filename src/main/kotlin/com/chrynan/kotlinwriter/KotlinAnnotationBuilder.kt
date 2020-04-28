@@ -5,7 +5,7 @@ package com.chrynan.kotlinwriter
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.CodeBlock
 
-class KotlinAnnotationBuilder(private val builder: AnnotationSpec.Builder) {
+class KotlinAnnotationBuilder internal constructor(private val builder: AnnotationSpec.Builder) {
 
     var useSiteTarget: AnnotationSpec.UseSiteTarget? = null
         set(value) {
@@ -22,5 +22,5 @@ class KotlinAnnotationBuilder(private val builder: AnnotationSpec.Builder) {
         builder.addMember(block)
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

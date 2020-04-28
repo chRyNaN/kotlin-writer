@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import java.lang.reflect.Type
 import kotlin.reflect.KClass
 
-class KotlinInterfaceBuilder(private val builder: TypeSpec.Builder) {
+class KotlinInterfaceBuilder internal constructor(private val builder: TypeSpec.Builder) {
 
     fun companionObject(name: String? = null, block: KotlinObjectBuilder.() -> Unit) {
         val companionObjectBuilder = KotlinObjectBuilder(TypeSpec.companionObjectBuilder(name))
@@ -115,5 +115,5 @@ class KotlinInterfaceBuilder(private val builder: TypeSpec.Builder) {
         builder.addType(nestedEnumClassBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

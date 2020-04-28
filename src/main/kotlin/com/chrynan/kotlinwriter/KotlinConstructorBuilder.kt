@@ -7,7 +7,7 @@ import java.lang.reflect.Type
 import javax.lang.model.element.Modifier
 import kotlin.reflect.KClass
 
-class KotlinConstructorBuilder(private val builder: FunSpec.Builder) {
+class KotlinConstructorBuilder internal constructor(private val builder: FunSpec.Builder) {
 
     var body: CodeBlock = CodeBlock.of("")
         set(value) {
@@ -86,5 +86,5 @@ class KotlinConstructorBuilder(private val builder: FunSpec.Builder) {
         builder.addParameter(parameterBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

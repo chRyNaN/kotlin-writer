@@ -6,7 +6,7 @@ import com.squareup.kotlinpoet.*
 import java.lang.reflect.Type
 import kotlin.reflect.KClass
 
-class KotlinEnumBuilder(private val builder: TypeSpec.Builder) {
+class KotlinEnumBuilder internal constructor(private val builder: TypeSpec.Builder) {
 
     var primaryConstructor: KotlinConstructorBuilder.() -> Unit = {}
         set(value) {
@@ -97,5 +97,5 @@ class KotlinEnumBuilder(private val builder: TypeSpec.Builder) {
         builder.addFunction(functionBuilder.build())
     }
 
-    fun build() = builder.build()
+    internal fun build() = builder.build()
 }

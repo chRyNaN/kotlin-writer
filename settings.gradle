@@ -1,2 +1,3 @@
-rootProject.name = 'kotlinwriter'
+rootProject.name = "kotlinwriter"
 
+enableFeaturePreview("GRADLE_METADATA")

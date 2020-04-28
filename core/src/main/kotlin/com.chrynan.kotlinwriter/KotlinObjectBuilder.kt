@@ -98,13 +98,15 @@ class KotlinObjectBuilder internal constructor(private val builder: TypeSpec.Bui
     }
 
     fun nestedObject(name: String, block: KotlinObjectBuilder.() -> Unit) {
-        val nestedObjectBuilder = KotlinObjectBuilder(TypeSpec.objectBuilder(name))
+        val nestedObjectBuilder =
+            KotlinObjectBuilder(TypeSpec.objectBuilder(name))
         block(nestedObjectBuilder)
         builder.addType(nestedObjectBuilder.build())
     }
 
     fun nestedObject(className: ClassName, block: KotlinObjectBuilder.() -> Unit) {
-        val nestedObjectBuilder = KotlinObjectBuilder(TypeSpec.objectBuilder(className))
+        val nestedObjectBuilder =
+            KotlinObjectBuilder(TypeSpec.objectBuilder(className))
         block(nestedObjectBuilder)
         builder.addType(nestedObjectBuilder.build())
     }

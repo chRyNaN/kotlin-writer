@@ -110,13 +110,15 @@ class KotlinClassBuilder internal constructor(private val builder: TypeSpec.Buil
     }
 
     fun nestedClass(name: String, block: KotlinClassBuilder.() -> Unit) {
-        val nestedClassBuilder = KotlinClassBuilder(TypeSpec.classBuilder(name))
+        val nestedClassBuilder =
+            KotlinClassBuilder(TypeSpec.classBuilder(name))
         block(nestedClassBuilder)
         builder.addType(nestedClassBuilder.build())
     }
 
     fun nestedClass(className: ClassName, block: KotlinClassBuilder.() -> Unit) {
-        val nestedClassBuilder = KotlinClassBuilder(TypeSpec.classBuilder(className))
+        val nestedClassBuilder =
+            KotlinClassBuilder(TypeSpec.classBuilder(className))
         block(nestedClassBuilder)
         builder.addType(nestedClassBuilder.build())
     }

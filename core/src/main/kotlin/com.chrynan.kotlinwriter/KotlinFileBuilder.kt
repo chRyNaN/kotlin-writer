@@ -160,7 +160,12 @@ class KotlinFileBuilder internal constructor(private val spec: FileSpec.Builder)
 }
 
 fun kotlinFile(packageName: String, fileName: String, block: KotlinFileBuilder.() -> Unit): FileSpec {
-    val fileBuilder = KotlinFileBuilder(FileSpec.builder(packageName = packageName, fileName = fileName))
+    val fileBuilder = KotlinFileBuilder(
+        FileSpec.builder(
+            packageName = packageName,
+            fileName = fileName
+        )
+    )
     block(fileBuilder)
     return fileBuilder.build()
 }

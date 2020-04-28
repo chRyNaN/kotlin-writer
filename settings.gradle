@@ -1,3 +1,5 @@
 rootProject.name = "kotlinwriter"
 
+include ":core"
+
 enableFeaturePreview("GRADLE_METADATA")
